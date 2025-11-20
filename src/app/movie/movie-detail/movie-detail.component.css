@@ -1,3 +1,104 @@
-img.movie-detail-img {
-  max-width: 500px;
+
+.movie-detail-wrapper {
+  background: #ffffff; 
+  min-height: 100vh;
+}
+
+
+.detail-header {
+  background: #ffffff; 
+  color: #000000; 
+  font-weight: 800; 
+  font-size: 2.4rem; 
+  padding: 1.2rem 0 0.6rem 0; 
+  text-align: center;
+}
+
+.detail-card {
+  background: #bcbcbc; 
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap !important; 
+  align-items: center; 
+  padding: 12px; 
+  box-sizing: border-box;
+}
+
+.detail-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 180px); 
+  padding: 1rem 0 2.5rem;
+  box-sizing: border-box;
+}
+
+
+.detail-image-wrap {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #ffffff; 
+  width: 100%;
+  height: 100%;
+}
+
+.detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+  
+.detail-left { flex: 0 0 40% !important; min-width: 40% !important; display:flex; flex-direction:column; align-items:center; }
+.detail-right { flex: 1 1 60% !important; min-width: 60% !important; display:flex; flex-direction:column; justify-content:center; }
+
+@media (max-width: 575px) {
+  .detail-card { flex-direction: column; }
+  .detail-left, .detail-right { width: 100%; flex: none; }
+  .detail-image-wrap { height: 260px; }
+}
+
+.detail-name h2 { margin: 0 0 8px 0; font-size: 1.6rem; font-weight: 800; text-align:center; }
+.btn-regresar { display: block; width: 140px; margin: 12px auto 0; }
+.detail-right .stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.stat-box {
+  background: transparent; 
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+}
+.stat-box strong { font-weight: 800; margin: 0; }
+.stat-val { margin: 0 0 0 8px; font-weight: 400; display: inline-block; }
+
+
+.detail-card > .detail-left, .detail-card > .detail-right { padding: 8px; }
+
+
+.detail-meta { margin: 4px 0; background: transparent; font-weight: 400; }
+.detail-meta strong { font-weight: 800; }
+
+  .btn-navy {
+  background-color: #606061; /* azul más claro */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px; /* menos redondeado */
+}
+
+.btn-navy:hover, .btn-navy:focus {
+  background-color: #646465;
 }

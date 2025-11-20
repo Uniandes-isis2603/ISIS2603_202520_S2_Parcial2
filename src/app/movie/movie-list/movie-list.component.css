@@ -1,12 +1,112 @@
-img.movie-img {
-  max-width: 250px;
+
+
+.movie-list-wrapper {
+  background: #ffffff; 
+  min-height: 100vh;
 }
 
-tr:hover {
-  background-color: aliceblue;
-  cursor: pointer;
+.movie-list-wrapper .container {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
-thead {
-  background-color: mediumturquoise;
+.movie-content { max-width: 1200px; margin-left: auto; margin-right: auto; margin-top: 0; }
+
+
+.home-header {
+  text-align: center;
+  color: #000000; 
+  font-size: 2.4rem; 
+  font-weight: 800; 
+  padding: 1.2rem 0 0.6rem 0; 
+}
+
+.movie-card {
+  background: transparent; 
+  border: none;
+  min-height: 420px; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+  flex: 1 1 auto; 
+}
+
+.movie-image-wrap {
+  flex: 0 0 55%; 
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff; 
+}
+
+.movie-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.movie-card-body {
+  background: #c6c6c6; 
+  padding: 0.9rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto; 
+  box-sizing: border-box;
+}
+
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  align-items: start; 
+  align-content: start; 
+
+
+@media (min-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column; 
+  flex: 1 1 auto;
+  align-self: start; 
+}
+
+.btn-navy {
+  background-color: #616b78; 
+  color: #ffffff;
+  border: none;
+  border-radius: 8px; 
+  padding: 0.5rem 1rem;
+}
+
+.btn-navy:active, .btn-navy:focus, .btn-navy:hover {
+  background-color: #616b78;
+  color: #fff;
+}
+
+.tag-word-list {
+  margin-top: 0.25rem;
+  margin-bottom: 0.45rem;
+  padding-left: 1.05rem; 
+  color: #333333;
+  font-size: 0.92rem;
+}
+
+.tag-word-list li {
+  margin: 0 0 0.18rem 0;
+  padding: 0;
+  list-style: disc;
+}
+
+
 }

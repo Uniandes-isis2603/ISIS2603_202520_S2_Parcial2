@@ -1,18 +1,55 @@
-<div class="movie-detail" *ngIf="movie">
-  <h2>{{ movie.titulo }}</h2>
-  <iframe width="420" height="315" [src]="safeTrailerUrl" *ngIf="safeTrailerUrl">
-  </iframe>
-  <p><strong>Sinopsis:</strong> {{ movie.sinopsis }}</p>
-  <p><strong>Calificación:</strong> {{ movie.calificacion }}/10</p>
-  <h3>Actores</h3>
-  <app-actor-list [actors]="movie.actores"></app-actor-list>
 
-  <h3>Generos</h3>
-  <ol>
-    @for(genero of movie.generos; track genero){
-    <li>
-      {{ genero }}
-    </li>
-    }
-  </ol>
+<div class="recipe-detail-wrapper py-5">
+  <div class="container">
+    <div *ngIf="loading" class="text-center">Cargando pelicula...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+
+    <div class="detail-header text-center mb-3">Peliculas Uniandes</div>
+
+
+    <ng-container *ngIf="!loading && movie; else noMovie">
+      <div class="detail-center">
+        <div class="detail-card mx-auto">
+          <div class="detail-left">
+            <div class="detail-name text-center mb-2"><h2>{{ movie.titulo }}</h2></div>
+            <div class="detail-image-wrap">
+              <iframe width="420" height="315" [src]="movie.trailer_url" *ngIf="movie.trailer_url">
+              </iframe>
+            </div>
+            <div class="p-3 text-center">
+              <button class="btn btn-navy btn-regresar" (click)="goBack()">Regresar</button>
+            </div>
+          </div>
+
+          <div class="detail-right">
+            <div class="p-4">
+              <h4>Sinopsis</h4>
+              <p>{{ movie.sinopsis }}</p>  
+
+              <h5 class="mt-3">Calificación</h5>
+              <p>{{ movie.calificacion }}</p>
+
+              <h5 class="mt-3">Director</h5>
+              <p>{{ movie.director }}</p>
+
+              <h5 class="mt-3">Duración</h5>
+              <p>{{ movie.duracion_minutos }}</p>
+
+              <h5 class="mt-2">Actores:</h5>
+              <app-actor-list [actors]="movie.actores"></app-actor-list>
+
+              <ul class="tag-word-list" *ngIf="movie.generos && movie.generos.length">
+              <li *ngFor="let tag of movie.generos">{{ tag }}</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noMovie>
+      <div class="alert alert-info">Seleccione una pelicula para ver el detalle.</div>
+    </ng-template>
+  </div>
 </div>

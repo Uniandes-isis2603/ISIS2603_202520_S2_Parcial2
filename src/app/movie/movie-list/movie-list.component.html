@@ -1,35 +1,31 @@
-<div>
-  <div>
-    @if (selected) {
-    <div *ngIf="selected">
-      <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+
+<div class="movie-list-wrapper">
+  <div class="home-header">Peliculas Uniandes</div>
+  <div class="container movie-content">
+    <div *ngIf="loading" class="text-center">Cargando peliculas...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <div *ngIf="!loading && movies.length; else noMovies" class="movie-grid">
+      <div class="movie-item" *ngFor="let movie of movies">
+        <div class="movie-card h-100 d-flex flex-column">
+          <div class="movie-image-wrap">
+            <img *ngIf="movie.poster" [src]="movie.poster" [alt]="movie.titulo" class="movie-img" />
+          </div>
+
+          <div class="movie-card-body d-flex flex-column">
+            <h5 class="card-title">{{ movie.titulo }}</h5>
+            <p class="card-text mb-1">{{ movie.duracion_minutos }}</p>
+            <p class="card-text mb-1">{{ movie.director}}</p>
+            <div class="mt-auto">
+              <button class="btn btn-navy w-100" (click)="onSelect(movie)">Detalle</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    }
-    <table>
-      <thead>
-        <tr>
-          <th>Titulo</th>
-          <th>Imagen</th>
-          <th>Duracion en minutos</th>
-          <th>Director</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(movie of movies; track movie.id){
-        <tr (click)="onSelect(movie)">
-          <td>{{ movie.titulo }}</td>
-          <td>
-            <img
-              class="movie-img"
-              [src]="movie.poster"
-              alt="{{ movie.poster }}"
-            />
-          </td>
-          <td>{{ movie.duracion_minutos }} min</td>
-          <td>{{ movie.director }} </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+
+    <ng-template #noMovies>
+      <div class="alert alert-info">No hay peliculas disponibles.</div>
+    </ng-template>
   </div>
 </div>
